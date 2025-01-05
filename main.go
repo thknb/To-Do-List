@@ -30,6 +30,7 @@ func main() {
 			task = strings.TrimSpace(task)
 			tasks = append(tasks, task)
 			fmt.Println("Task added.")
+
 		case "2":
 			fmt.Println("Tasks:")
 			for i, task := range tasks {
