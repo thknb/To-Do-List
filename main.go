@@ -6,12 +6,11 @@ import (
 	"os"
 	"strconv"
 	"strings"
-	"stroconv"
 )
 
 var tasks = []string{}
 
-func main(){
+func main() {
 	reader := bufio.NewReader(os.Stdin)
 	for {
 		fmt.Println("Choose an option:")
@@ -21,44 +20,44 @@ func main(){
 		fmt.Println("4. Exit")
 		fmt.Println("Enter option: ")
 
-		option, := reader.ReadString('\n')
+		option, _ := reader.ReadString('\n')
 		option = strings.TrimSpace(option)
 
-		switch option{
-		case"1":
+		switch option {
+		case "1":
 			fmt.Print("Enter task:")
-			task, := reader.ReadString('\n')
-			task = string.TrimSpace(task)
+			task, _ := reader.ReadString('\n')
+			task = strings.TrimSpace(task)
 			tasks = append(tasks, task)
 			fmt.Println("Task added.")
-		case"2":
+		case "2":
 			fmt.Println("Tasks:")
-			for i, task := range tasks{
+			for i, task := range tasks {
 				fmt.Printf("%d. %s\n", i+1, task)
 			}
-		case"3":
+		case "3":
 			fmt.Print("Enter task number to complete: ")
-			numStr, _:= reader.ReadString('\n')
+			numStr, _ := reader.ReadString('\n')
 			numStr = strings.TrimSpace(numStr)
 			num, err := strconv.Atoi(numStr)
-			if err == nil && num >= 1 && num <= len(tasks){
-				fmt.Printf("Task %d completed.\n" num)
+			if err == nil && num >= 1 && num <= len(tasks) {
+				fmt.Printf("Task %d completed.\n", num)
 				tasks[num-1] = tasks[num-1] + " [completed]"
-			} else{
+			} else {
 				fmt.Println("Invalid task number. ")
 			}
-		case"4":
+		case "4":
 			fmt.Print("Enter task number to delete: ")
-			numStr, _:= reader.ReadString('\n')
+			numStr, _ := reader.ReadString('\n')
 			numStr = strings.TrimSpace(numStr)
-			num, err := strconv.Atio(numStr)
-			if err == nil && num >= 0 && num <= len(tasks){
+			num, err := strconv.Atoi(numStr)
+			if err == nil && num >= 0 && num <= len(tasks) {
 				tasks = append(tasks[:num-1], tasks[num:]...)
 				fmt.Printf("Task %d deleted.\n", num)
-			} else{
+			} else {
 				fmt.Println("Invalid task number. ")
 			}
-		case"5":
+		case "5":
 			fmt.Println("Exiting...")
 			os.Exit(0)
 		default:
